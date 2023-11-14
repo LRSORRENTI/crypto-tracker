@@ -1,0 +1,25 @@
+LIST OF COINPAPRIKA API ENDPOINTS
+
+Bitcoin: 
+
+https://api.coinpaprika.com/v1/coins/btc-bitcoin/ohlcv/today
+
+Ethereum: 
+
+https://api.coinpaprika.com/v1/coins/eth-ethereum/ohlcv/today
+
+Litecoin: 
+
+https://api.coinpaprika.com/v1/coins/ltc-litecoin/ohlcv/today
+
+Dogecoin: 
+
+https://api.coinpaprika.com/v1/coins/doge-dogecoin/ohlcv/today
+
+Cardano: 
+
+https://api.coinpaprika.com/v1/coins/ada-cardano/ohlcv/today
+
+All Traded Coins (HUGE API ENDPOINT LISTS ALL COINS): 
+
+https://api.coinpaprika.com/v1/coins
