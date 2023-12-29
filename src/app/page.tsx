@@ -63,7 +63,7 @@ export default function DashboardPage() {
             <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
             <div className="flex items-center space-x-2">
               <CalendarDateRangePicker />
-              <Button>Download</Button>
+              <Button style={{backgroundColor: "#FF1867", color: "#ffffff"}}>Download</Button>
             </div>
           </div>
           <Tabs defaultValue="overview" className="space-y-4">
@@ -96,7 +96,7 @@ export default function DashboardPage() {
                       strokeWidth="2"
                       className="h-4 w-4 text-muted-foreground"
                     >
-                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                      <path style={{color: "#FF1867"}} d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
                     </svg>
                   </CardHeader>
                   <CardContent>
@@ -121,8 +121,8 @@ export default function DashboardPage() {
                       strokeWidth="2"
                       className="h-4 w-4 text-muted-foreground"
                     >
-                     <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                      {/* <circle cx="9" cy="7" r="4" /> */}
+                     <path style={{color: "#FF1867"}} d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+             
 
                     </svg>
                   </CardHeader>
@@ -147,7 +147,7 @@ export default function DashboardPage() {
                       className="h-4 w-4 text-muted-foreground"
                     >
                      
-                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                      <path style={{color: "#FF1867"}} d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
                     </svg>
                   </CardHeader>
                   <CardContent>
@@ -172,7 +172,7 @@ export default function DashboardPage() {
                       strokeWidth="2"
                       className="h-4 w-4 text-muted-foreground"
                     >
-                      <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                      <path style={{color: "#FF1867"}} d="M22 12h-4l-3 9L9 3l-3 9H2" />
                     </svg>
                   </CardHeader>
                   <CardContent>
