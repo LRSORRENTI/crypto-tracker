@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 export default function DashboardPage() {
   return (
     <>
-      <div className="md:hidden">
+    <div className="sm:hidden">
         <Image
           src="/examples/dashboard-light.png"
           width={1280}

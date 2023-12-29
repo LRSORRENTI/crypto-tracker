@@ -25,11 +25,14 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-        <nav>
-          <h1>
+        <nav style={{display: "flex", justifyContent: "space-between"}}>
+          <h1 style={{marginTop: "15px", marginLeft: "25px"}}>
             Crypto Tracker
-            <ModeToggle/>
+            {/* <ModeToggle/> */}
           </h1>
+            <div style={{marginRight: "10px", marginTop: "3px"}}>
+            <ModeToggle/>
+            </div>
         </nav>
         {children}
         </ThemeProvider>
