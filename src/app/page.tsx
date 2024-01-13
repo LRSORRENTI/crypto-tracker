@@ -27,6 +27,7 @@ export const metadata: Metadata = {
   title: "Dashboard",
   description: "Example dashboard app built using the components.",
 }
+let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
 export default function DashboardPage() {
   return (
@@ -60,11 +61,11 @@ export default function DashboardPage() {
         </div> */}
         <div className="flex-1 space-y-4 p-8 pt-6">
           <div className="flex items-center justify-between space-y-2">
-            <h2 className="text-sm font-bold tracking-tight md:text-xl">Dashboard</h2>
+            <h2 className="text-2xl font-bold tracking-tight md:text-3xl">Dashboard</h2>
             <div className="flex items-center space-x-2">
               {/* <CalendarDateRangePicker /> */}
               {/* <Button style={{backgroundColor: "#FF1867", color: "#ffffff"}}>Download</Button> */}
-              <p>Dynamic Date Goes Here</p>
+              <p> {new Date().toLocaleDateString()}</p><p>{time}</p>
             </div>
           </div>
           <Tabs defaultValue="overview" className="space-y-4">
