@@ -48,7 +48,7 @@ export default function DashboardPage() {
           className="hidden dark:block"
         />
       </div> */}
-      <div className="flex-col sm:flex">
+      <div className="flex-col max-w-6xl mx-auto">
         {/* <div className="border-b">
           <div className="flex h-16 items-center px-4">
             <TeamSwitcher />
