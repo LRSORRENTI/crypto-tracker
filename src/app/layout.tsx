@@ -25,12 +25,12 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-        <nav style={{display: "flex", justifyContent: "space-between"}}>
-          <h1 style={{marginTop: "15px", marginLeft: "25px"}}>
+        <nav className='flex justify-between'>
+          <h1>
             Crypto Tracker
             {/* <ModeToggle/> */}
           </h1>
-            <div style={{marginRight: "10px", marginTop: "3px"}}>
+            <div>
             <ModeToggle/>
             </div>
         </nav>

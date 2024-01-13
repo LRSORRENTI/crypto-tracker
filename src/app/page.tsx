@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 export default function DashboardPage() {
   return (
     <>
-    <div className="sm:hidden">
+    {/* <div className="sm:hidden">
         <Image
           src="/examples/dashboard-light.png"
           width={1280}
@@ -46,8 +46,8 @@ export default function DashboardPage() {
           alt="Dashboard"
           className="hidden dark:block"
         />
-      </div>
-      <div className="hidden flex-col sm:flex">
+      </div> */}
+      <div className="flex-col sm:flex">
         <div className="border-b">
           <div className="flex h-16 items-center px-4">
             <TeamSwitcher />
@@ -60,7 +60,7 @@ export default function DashboardPage() {
         </div>
         <div className="flex-1 space-y-4 p-8 pt-6">
           <div className="flex items-center justify-between space-y-2">
-            <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+            <h2 className="text-sm font-bold tracking-tight md:text-xl">Dashboard</h2>
             <div className="flex items-center space-x-2">
               <CalendarDateRangePicker />
               <Button style={{backgroundColor: "#FF1867", color: "#ffffff"}}>Download</Button>
@@ -192,22 +192,11 @@ export default function DashboardPage() {
                     <Overview />
                   </CardContent>
                 </Card>
-                <Card className="col-span-3">
-                  <CardHeader>
-                    <CardTitle>Recent Sales</CardTitle>
-                    <CardDescription>
-                      You made 265 sales this month.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <RecentSales />
-                  </CardContent>
-                </Card>
-              </div>
+                </div>
             </TabsContent>
           </Tabs>
         </div>
-      </div>
+        </div>
     </>
   )
 }
