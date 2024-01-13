@@ -26,11 +26,11 @@ export default function RootLayout({
             disableTransitionOnChange
           >
         <nav className='flex justify-between'>
-          <h1>
+          <h1 className='ml-6'>
             Crypto Tracker
             {/* <ModeToggle/> */}
           </h1>
-            <div>
+            <div className='ml-auto md:mr-6'>
             <ModeToggle/>
             </div>
         </nav>
