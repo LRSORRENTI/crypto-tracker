@@ -32,39 +32,11 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
 export default function DashboardPage() {
   return (
     <>
-    {/* <div className="sm:hidden">
-        <Image
-          src="/examples/dashboard-light.png"
-          width={1280}
-          height={866}
-          alt="Dashboard"
-          className="block dark:hidden"
-        />
-        <Image
-          src="/examples/dashboard-dark.png"
-          width={1280}
-          height={866}
-          alt="Dashboard"
-          className="hidden dark:block"
-        />
-      </div> */}
       <div className="flex-col max-w-6xl mx-auto">
-        {/* <div className="border-b">
-          <div className="flex h-16 items-center px-4">
-            <TeamSwitcher />
-            <MainNav className="mx-6" />
-            <div className="ml-auto flex items-center space-x-4">
-              <Search />
-              <UserNav />
-            </div>
-          </div>
-        </div> */}
         <div className="flex-1 space-y-4 p-8 pt-6">
           <div className="flex items-center justify-between space-y-2">
             <h2 className="text-2xl font-bold tracking-tight md:text-3xl">Dashboard</h2>
             <div className="flex items-center space-x-2">
-              {/* <CalendarDateRangePicker /> */}
-              {/* <Button style={{backgroundColor: "#FF1867", color: "#ffffff"}}>Download</Button> */}
               <p> {new Date().toLocaleDateString()}</p><p>{time}</p>
             </div>
           </div>
