@@ -18,6 +18,7 @@ import {
 import { CalendarDateRangePicker } from "@/components/ui/date-range-picker"
 import { MainNav } from "@/components/ui/main-nav"
 import { Overview } from "@/components/ui/overview"
+import { BitcoinOverview } from "@/components/ui/BitcoinOverview"
 import { RecentSales } from "@/components/ui/recent-sales"
 import { Search } from "@/components/ui/search"
 import TeamSwitcher from "@/components/ui/team-switcher"
@@ -164,7 +165,9 @@ export default function DashboardPage() {
                     <CardTitle>Bitcoin</CardTitle>
                   </CardHeader>
                   <CardContent className="pl-2">
-                    <Overview />
+                    <BitcoinOverview/>
+                    {/* <Overview /> */}
+                    
                   </CardContent>
                 </Card>
                 </div>
