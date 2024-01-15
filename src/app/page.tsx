@@ -1,6 +1,5 @@
 import { Metadata } from "next"
 import Image from "next/image"
-
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -166,6 +165,7 @@ export default function DashboardPage() {
                   </CardHeader>
                   <CardContent className="pl-2">
                     <BitcoinOverview/>
+                
                     {/* <Overview /> */}
                     
                   </CardContent>

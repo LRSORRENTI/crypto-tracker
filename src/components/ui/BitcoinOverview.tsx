@@ -25,7 +25,7 @@ export function BitcoinOverview() {
           {
             name: "open",
             // total: Math.floor(Math.random() * 5000) + 1000,
-            total: priceData?.open
+            total: priceData?.open,
           },
           {
             name: "high",
@@ -44,7 +44,7 @@ export function BitcoinOverview() {
     useEffect(() => {
         const fetchPriceData = async () => {
             try {
-                const response = await fetch('https://api.coinpaprika.com/v1/coins/btc-bitcoin/ohlcv/historical?start=2024-01-14&end=2024-01-14');
+                const response = await fetch('https://api.coinpaprika.com/v1/coins/btc-bitcoin/ohlcv/today');
                 const data: BitcoinPriceData[] = await response.json();
                 if (data && data.length > 0) {
                     setPriceData(data[0]);
@@ -56,9 +56,13 @@ export function BitcoinOverview() {
 
         fetchPriceData();
     }, []);
+
+    const renderCustomBarLabel = ({ payload, x, y, width, height, value }) => {
+      return <text x={x + width / 2} y={y} fill="#666" textAnchor="middle" dy={-6}>{`${value.toFixed(2)}`}</text>;
+    };
   return (
     <ResponsiveContainer width="100%" height={350}>
-      <BarChart data={data}>
+      <BarChart width={40} data={data}>
         <XAxis
           dataKey="name"
           stroke="#888888"
@@ -73,7 +77,7 @@ export function BitcoinOverview() {
           axisLine={false}
           tickFormatter={(value) => `$${value}`}
         />
-        <Bar dataKey="total" fill="#FF1867"  radius={[4, 4, 0, 0]} />
+        <Bar dataKey="total" barSize={70} fill="#FF1867" radius={[4, 4, 0, 0]} label={renderCustomBarLabel} />
       </BarChart>
     </ResponsiveContainer>
   )
