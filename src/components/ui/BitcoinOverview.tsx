@@ -23,20 +23,20 @@ export function BitcoinOverview() {
         // This is where the Crypto API call data will dynamically 
         // change later 
           {
-            name: "open",
+            name: "Open",
             // total: Math.floor(Math.random() * 5000) + 1000,
             total: priceData?.open,
           },
           {
-            name: "high",
+            name: "High",
             total: priceData?.high
           },
           {
-            name: "low",
+            name: "Low",
             total: priceData?.low
           },
           {
-            name: "close",
+            name: "Close",
             total: priceData?.close
           },
         ]
@@ -56,29 +56,37 @@ export function BitcoinOverview() {
 
         fetchPriceData();
     }, []);
-
-    const renderCustomBarLabel = ({ payload, x, y, width, height, value }) => {
-      return <text x={x + width / 2} y={y} fill="#666" textAnchor="middle" dy={-6}>{`${value.toFixed(2)}`}</text>;
+    const renderCustomBarLabel = ({ x, y, width, height, value }) => {
+      return value ? (
+        <text style={{fontSize: "12px"}} x={x + width / 2} y={y} fill="#FFF9" textAnchor="middle" dy={-6}>
+          {`$${value.toFixed(2)}`}
+        </text>
+      ) : null;
     };
-  return (
-    <ResponsiveContainer width="100%" height={350}>
-      <BarChart width={40} data={data}>
-        <XAxis
-          dataKey="name"
-          stroke="#888888"
-          fontSize={12}
-          tickLine={false}
-          axisLine={false}
-        />
-        <YAxis
-          stroke="#888888"
-          fontSize={12}
-          tickLine={false}
-          axisLine={false}
-          tickFormatter={(value) => `$${value}`}
-        />
-        <Bar dataKey="total" barSize={70} fill="#FF1867" radius={[4, 4, 0, 0]} label={renderCustomBarLabel} />
-      </BarChart>
-    </ResponsiveContainer>
-  )
+
+    const maxYValue = Math.max(...data.map(d => d.total ? d.total : 0));
+    const yAxisMax = maxYValue > 50000 ? maxYValue : 100000;
+
+    return (
+      <ResponsiveContainer width="100%" height={350}>
+        <BarChart data={data}>
+          <XAxis
+            dataKey="name"
+            stroke="#888888"
+            fontSize={12}
+            tickLine={false}
+            axisLine={false}
+          />
+          <YAxis
+            stroke="#888888"
+            fontSize={12}
+            tickLine={false}
+            axisLine={false}
+            tickFormatter={(value) => `$${value}`}
+            domain={[0, yAxisMax]}
+          />
+          <Bar dataKey="total" barSize={70} fill="#FF1867" radius={[4, 4, 0, 0]} label={renderCustomBarLabel} />
+        </BarChart>
+      </ResponsiveContainer>
+    )
 }
