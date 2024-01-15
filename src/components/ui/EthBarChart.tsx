@@ -17,7 +17,7 @@ interface EthPriceData {
 
 
 
-export function EthOverview() {
+export function EthBarChart() {
     const [priceData, setPriceData] = useState<EthPriceData | null>(null);
     const data = [
         // This is where the Crypto API call data will dynamically 
@@ -69,8 +69,9 @@ export function EthOverview() {
 
 
     const yAxisMax = (priceData?.high.toFixed(0));
-    let parsedy = (parseInt(yAxisMax) + 5000);
-    console.log(parsedy)
+    let parsedy = parseInt(yAxisMax) + 100;
+    parsedy = Math.round(parsedy / 100) * 100;
+    console.log(parsedy);
     const maxYValue = Math.max(...data.map(d => d.total ? d.total : 0));
 
     return (
@@ -90,7 +91,7 @@ export function EthOverview() {
             axisLine={false}
             tickFormatter={(value) => `$${value}`}
             // domain={[0, yAxisMax]}
-            // domain={[0, 45000]}
+            domain={[0, parsedy]}
           />
           <Bar dataKey="total" barSize={70} fill="#FF1867" radius={[4, 4, 0, 0]} label={renderCustomBarLabel}  />
         </BarChart>

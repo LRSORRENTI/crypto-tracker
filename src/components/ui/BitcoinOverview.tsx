@@ -1,4 +1,4 @@
-"use client"
+// "use client"
 import React, { useEffect, useState } from 'react';
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
 
@@ -69,8 +69,8 @@ export function BitcoinOverview() {
     // const yAxisMax = 50000;
 
     const yAxisMax = (priceData?.high.toFixed(0));
-    let parsedy = (parseInt(yAxisMax) + 5000);
-    console.log(parsedy)
+    // let parsedy = (parseInt(yAxisMax) + 5000);
+    // console.log(parsedy)
     const maxYValue = Math.max(...data.map(d => d.total ? d.total : 0));
     // const yAxisMax = priceData?.high > 50000 ? maxYValue : 100000;
     // const yAxisMax = priceData?.high > 40000 ? maxYValue : priceData?.high + 5000;
