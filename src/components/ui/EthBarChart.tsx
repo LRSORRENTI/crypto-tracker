@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
 
-interface BitcoinPriceData {
+interface EthPriceData {
     time_open: string;
     time_close: string;
     open: number;
@@ -17,8 +17,8 @@ interface BitcoinPriceData {
 
 
 
-export function BitcoinOverview() {
-    const [priceData, setPriceData] = useState<BitcoinPriceData | null>(null);
+export function EthOverview() {
+    const [priceData, setPriceData] = useState<EthPriceData | null>(null);
     const data = [
         // This is where the Crypto API call data will dynamically 
         // change later 
@@ -45,13 +45,13 @@ export function BitcoinOverview() {
     useEffect(() => {
         const fetchPriceData = async () => {
             try {
-                const response = await fetch('https://api.coinpaprika.com/v1/coins/btc-bitcoin/ohlcv/today');
-                const data: BitcoinPriceData[] = await response.json();
+                const response = await fetch('https://api.coinpaprika.com/v1/coins/eth-ethereum/ohlcv/today');
+                const data: EthPriceData[] = await response.json();
                 if (data && data.length > 0) {
                     setPriceData(data[0]);
                 }
             } catch (error) {
-                console.error("Error fetching Bitcoin data:", error);
+                console.error("Error fetching Ethereum data:", error);
             }
         };
 
@@ -66,15 +66,13 @@ export function BitcoinOverview() {
       ) : null;
     };
 
-    // const yAxisMax = 50000;
+
 
     const yAxisMax = (priceData?.high.toFixed(0));
     let parsedy = (parseInt(yAxisMax) + 5000);
     console.log(parsedy)
     const maxYValue = Math.max(...data.map(d => d.total ? d.total : 0));
-    // const yAxisMax = priceData?.high > 50000 ? maxYValue : 100000;
-    // const yAxisMax = priceData?.high > 40000 ? maxYValue : priceData?.high + 5000;
-    // const yAxisMax = priceData?.high + 5000;
+
     return (
       <ResponsiveContainer width="100%" height={350}>
         <BarChart data={data}>
