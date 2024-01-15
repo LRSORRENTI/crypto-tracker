@@ -1,4 +1,4 @@
-"use client"
+// "use client"
 import React, { useEffect, useState } from 'react';
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
 
@@ -69,7 +69,7 @@ export function EthBarChart() {
 
 
     const yAxisMax = (priceData?.high.toFixed(0));
-    let parsedy = parseInt(yAxisMax) + 100;
+    let parsedy = parseInt(yAxisMax) + 200;
     parsedy = Math.round(parsedy / 100) * 100;
     console.log(parsedy);
     const maxYValue = Math.max(...data.map(d => d.total ? d.total : 0));
