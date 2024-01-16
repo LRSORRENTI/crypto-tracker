@@ -25,6 +25,7 @@ import { Search } from "@/components/ui/search"
 import TeamSwitcher from "@/components/ui/team-switcher"
 import { UserNav } from "@/components/ui/user-nav"
 import { EthBarChart } from "@/components/ui/EthBarChart";
+import { CardanoBarChart } from '@/components/ui/CardanoBarChart'
 
 // export const metadata: Metadata = {
 //   title: "Dashboard",
@@ -60,7 +61,9 @@ export default function DashboardPage() {
               >
               Ethereum
               </TabsTrigger>
-              <TabsTrigger style={{color: "#00FF3C"}} value="notifications">
+              <TabsTrigger style={{color: "#00FF3C"}}
+              value='ADA'
+              onClick={() => setActiveTab("ADA")}>
                 Cardano
               </TabsTrigger>
               <TabsTrigger style={{color: "#bc13fe"}} value="analytics">
@@ -176,10 +179,12 @@ export default function DashboardPage() {
         <Card className="col-span-4">
           <CardHeader>
             <CardTitle>{activeTab === "overview" ? "Bitcoin" : "Ethereum"}</CardTitle>
+            <CardTitle>{}</CardTitle>
           </CardHeader>
-          <CardContent className="pl-2">
+          <CardContent className="pl-3">
             {activeTab === "overview" && <BitcoinOverview />}
             {activeTab === "reports" && <EthBarChart />}
+            {activeTab === "ADA" && <CardanoBarChart/>}
             {/* Add similar conditions for other tabs if needed */}
           </CardContent>
         </Card>

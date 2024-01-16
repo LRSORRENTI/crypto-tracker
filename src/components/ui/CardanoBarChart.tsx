@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
 
-interface EthPriceData {
+interface AdaPriceData {
     time_open: string;
     time_close: string;
     open: number;
@@ -17,8 +17,8 @@ interface EthPriceData {
 
 
 
-export function EthBarChart() {
-    const [priceData, setPriceData] = useState<EthPriceData | null>(null);
+export function CardanoBarChart() {
+    const [priceData, setPriceData] = useState<AdaPriceData | null>(null);
     const data = [
         // This is where the Crypto API call data will dynamically 
         // change later 
@@ -45,13 +45,13 @@ export function EthBarChart() {
     useEffect(() => {
         const fetchPriceData = async () => {
             try {
-                const response = await fetch('https://api.coinpaprika.com/v1/coins/eth-ethereum/ohlcv/today');
-                const data: EthPriceData[] = await response.json();
+                const response = await fetch('https://api.coinpaprika.com/v1/coins/ada-cardano/ohlcv/today');
+                const data: AdaPriceData[] = await response.json();
                 if (data && data.length > 0) {
                     setPriceData(data[0]);
                 }
             } catch (error) {
-                console.error("Error fetching Ethereum data:", error);
+                console.error("Error fetching Cardano data:", error);
             }
         };
 
@@ -70,7 +70,7 @@ export function EthBarChart() {
 
     const yAxisMax = (priceData?.high.toFixed(0));
     let parsedy = parseInt(yAxisMax) + 200;
-    parsedy = Math.round(parsedy / 100) * 100;
+    parsedy = Math.round(parsedy / 100);
     console.log(parsedy);
     const maxYValue = Math.max(...data.map(d => d.total ? d.total : 0));
 
@@ -93,7 +93,7 @@ export function EthBarChart() {
             // domain={[0, yAxisMax]}
             domain={[0, parsedy]}
           />
-          <Bar dataKey="total" barSize={70} fill="#00d1dc" radius={[4, 4, 0, 0]} label={renderCustomBarLabel}  />
+          <Bar dataKey="total" barSize={70} fill="#00FF3c" radius={[4, 4, 0, 0]} label={renderCustomBarLabel}  />
         </BarChart>
       </ResponsiveContainer>
     )
