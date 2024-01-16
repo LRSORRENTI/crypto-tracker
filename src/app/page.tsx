@@ -109,7 +109,7 @@ export default function DashboardPage() {
                       strokeWidth="2"
                       className="h-4 w-4 text-muted-foreground"
                     >
-                     <path style={{color: "#FF1867"}} d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                     <path style={{color: "#00d1dc"}} d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
              
 
                     </svg>
@@ -135,7 +135,7 @@ export default function DashboardPage() {
                       className="h-4 w-4 text-muted-foreground"
                     >
                      
-                      <path style={{color: "#FF1867"}} d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                      <path style={{color: "#00ff3c"}} d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
                     </svg>
                   </CardHeader>
                   <CardContent>
@@ -161,7 +161,7 @@ export default function DashboardPage() {
                       className="h-4 w-4 text-muted-foreground"
                     >
                      
-                      <path style={{color: "#FF1867"}} d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                      <path style={{color: "#bc13fe"}} d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
                     </svg>
                   </CardHeader>
                   <CardContent>
