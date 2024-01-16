@@ -67,6 +67,15 @@
   .magenta {
     --magenta: #ff1867;
   }
+  .lime {
+    --lime: #00ff3c;
+  }
+  .electric-blue {
+    --electric-blue: #7df9ff;
+  }
+  .purp {
+    --purp: #9800ff;
+  }
 }
 
 @layer base {

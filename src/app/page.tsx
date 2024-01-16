@@ -54,16 +54,16 @@ export default function DashboardPage() {
             onClick={() => setActiveTab("overview")}
             >Bitcoin</TabsTrigger>
              <TabsTrigger
-              style={{ color: "#FF1867" }}
+              style={{ color: "#00d1dc" }}
               value="reports"
               onClick={() => setActiveTab("reports")}
               >
               Ethereum
               </TabsTrigger>
-              <TabsTrigger style={{color: "#FF1867"}} value="notifications">
+              <TabsTrigger style={{color: "#00FF3C"}} value="notifications">
                 Cardano
               </TabsTrigger>
-              <TabsTrigger style={{color: "#FF1867"}} value="analytics">
+              <TabsTrigger style={{color: "#bc13fe"}} value="analytics">
                 Litecoin
               </TabsTrigger>
             </TabsList>
