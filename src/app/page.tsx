@@ -26,6 +26,7 @@ import TeamSwitcher from "@/components/ui/team-switcher"
 import { UserNav } from "@/components/ui/user-nav"
 import { EthBarChart } from "@/components/ui/EthBarChart";
 import { CardanoBarChart } from '@/components/ui/CardanoBarChart'
+import { LitecoinBarChart } from '@/components/ui/LitecoinBarChart'
 
 // export const metadata: Metadata = {
 //   title: "Dashboard",
@@ -37,14 +38,29 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState("overview");
+  const getCardTitle = (tab: any) => {
+    switch (tab) {
+      case "overview":
+        return "Bitcoin";
+      case "reports":
+        return "Ethereum";
+      case "ADA":
+        return "Cardano";
+      case "LTC":
+        return "Litecoin";
+      default:
+        return "Default";
+    }
+  };
+  
   return (
     <>
       <div className="flex-col max-w-6xl mx-auto">
         <div className="flex-1 space-y-4 p-8 pt-6">
           <div className="flex items-center justify-between space-y-2">
-            <h2 className="text-2xl font-bold tracking-tight md:text-3xl" style={{color: "#66d184" }}>Dashboard</h2>
+            <h2 className="text-2xl font-bold tracking-tight md:text-3xl" style={{color: "#CFFF04" }}>Dashboard</h2>
             <div className="flex items-center space-x-2">
-              <p> {new Date().toLocaleDateString()}</p><p>{time}</p>
+              <p className='date' style={{color: "#CFFF04"}}> {new Date().toLocaleDateString()}</p><p style={{color: "#CFFF04"}}>{time}</p>
             </div>
           </div>
           <Tabs defaultValue="overview" className="space-y-4">
@@ -66,7 +82,10 @@ export default function DashboardPage() {
               onClick={() => setActiveTab("ADA")}>
                 Cardano
               </TabsTrigger>
-              <TabsTrigger style={{color: "#bc13fe"}} value="analytics">
+              <TabsTrigger style={{color: "#bc13fe"}}
+              value='LTC'
+              onClick={() => setActiveTab("LTC")}
+              >
                 Litecoin
               </TabsTrigger>
             </TabsList>
@@ -177,14 +196,14 @@ export default function DashboardPage() {
               </div>
               <div className="grid gap-4 md:grid-cols-2">
         <Card className="col-span-4">
-          <CardHeader>
-            <CardTitle>{activeTab === "overview" ? "Bitcoin" : "Ethereum"}</CardTitle>
-            <CardTitle>{}</CardTitle>
+        <CardHeader>
+         <CardTitle>{getCardTitle(activeTab)}</CardTitle>
           </CardHeader>
           <CardContent className="pl-3">
             {activeTab === "overview" && <BitcoinOverview />}
             {activeTab === "reports" && <EthBarChart />}
             {activeTab === "ADA" && <CardanoBarChart/>}
+            {activeTab === "LTC" && <LitecoinBarChart/>}
             {/* Add similar conditions for other tabs if needed */}
           </CardContent>
         </Card>

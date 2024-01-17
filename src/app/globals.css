@@ -67,14 +67,18 @@
   .magenta {
     --magenta: #ff1867;
   }
+
+  .electric-blue {
+    --electric-blue: #00d1dc;
+  }
   .lime {
     --lime: #00ff3c;
   }
-  .electric-blue {
-    --electric-blue: #7df9ff;
-  }
   .purp {
-    --purp: #9800ff;
+    --purp: #be5cff;
+  }
+  .mint {
+    --color: #66d184;
   }
 }
 
@@ -102,4 +106,8 @@
     @apply scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight
   transition-colors first:mt-0;
   }
+}
+
+.date {
+  color: red;
 }
