@@ -27,7 +27,7 @@ import { UserNav } from "@/components/ui/user-nav"
 import { EthBarChart } from "@/components/ui/EthBarChart";
 import { CardanoBarChart } from '@/components/ui/CardanoBarChart'
 import { LitecoinBarChart } from '@/components/ui/LitecoinBarChart'
-
+import '../app/globals.css'
 // export const metadata: Metadata = {
 //   title: "Dashboard",
 //   description: "Example dashboard app built using the components.",
