@@ -47,6 +47,7 @@ export function BitcoinOverview() {
             try {
                 const response = await fetch('https://api.coinpaprika.com/v1/coins/btc-bitcoin/ohlcv/today');
                 const data: BitcoinPriceData[] = await response.json();
+                console.log(data);
                 if (data && data.length > 0) {
                     setPriceData(data[0]);
                 }
@@ -68,12 +69,12 @@ export function BitcoinOverview() {
 
     // const yAxisMax = 50000;
 
-    const yAxisMax = (priceData?.high.toFixed(0));
+    // const yAxisMax = (priceData?.high.toFixed(2));
     // let parsedy = (parseInt(yAxisMax) + 5000);
     // console.log(parsedy)
     const maxYValue = Math.max(...data.map(d => d.total ? d.total : 0));
     // const yAxisMax = priceData?.high > 50000 ? maxYValue : 100000;
-    // const yAxisMax = priceData?.high > 40000 ? maxYValue : priceData?.high + 5000;
+    const yAxisMax = priceData?.high > 40000 ? maxYValue : priceData?.high + 5000;
     // const yAxisMax = priceData?.high + 5000;
     return (
       <ResponsiveContainer width="100%" height={350}>
@@ -92,7 +93,7 @@ export function BitcoinOverview() {
             axisLine={false}
             tickFormatter={(value) => `$${value}`}
             // domain={[0, yAxisMax]}
-            // domain={[0, 45000]}
+            // domain={[0, yAxisMax]}
           />
           <Bar dataKey="total" barSize={70} fill="#FF1867" radius={[4, 4, 0, 0]} label={renderCustomBarLabel}  />
         </BarChart>

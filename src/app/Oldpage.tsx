@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, {useState} from 'react'
 import { Metadata } from "next"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -28,43 +28,46 @@ import { EthBarChart } from "@/components/ui/EthBarChart";
 import { CardanoBarChart } from '@/components/ui/CardanoBarChart'
 import { LitecoinBarChart } from '@/components/ui/LitecoinBarChart'
 
-const DashboardPage = () => {
-    // }
+// export const metadata: Metadata = {
+//   title: "Dashboard",
+//   description: "Example dashboard app built using the components.",
+// }
 let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  const [btcPrice, setBtcPrice] = useState<number | null>(null);
-  const [ethPrice, setEthPrice] = useState<number | null>(null);
-  const [adaPrice, setAdaPrice] = useState<number | null>(null);
-  const [ltcPrice, setLtcPrice] = useState<number | null>(null);
+
+interface PriceData {
+  time_open: string;
+  time_close: string;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+  volume: number;
+  market_cap: number;
+}
+
+
+const fetchPriceData = async () => {
+  try {
+      const btcresponse = await fetch('https://api.coinpaprika.com/v1/coins/btc-bitcoin/ohlcv/today');
+      const ethresponse = await fetch ('https://api.coinpaprika.com/v1/coins/eth-ethereum/ohlcv/today');
+      const adaresponse = await fetch('https://api.coinpaprika.com/v1/coins/ada-cardano/ohlcv/today');
+      const ltcresponse = await fetch('https://api.coinpaprika.com/v1/coins/ltc-litecoin/ohlcv/today')
+      const btcdata: PriceData[] = await btcresponse.json();
+      const ethdata: PriceData[] = await ethresponse.json();
+      const adadata: PriceData[] = await adaresponse.json();
+      const ltcdata: PriceData[] = await ltcresponse.json();
+      console.log(`BTC${JSON.stringify(btcdata)}, ETH: ${ethdata}, ADA:${adadata}, LTC: ${ltcdata} `);
+      // if (data && data.length > 0) {
+      //     setPriceData(data[0]);
+      // }
+  } catch (error) {
+      console.error("Error fetching Bitcoin data:", error);
+  }
+};
+fetchPriceData()
+
+export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState("overview");
-
-  // Define fetchPriceData inside your component
-  const fetchPriceData = async () => {
-    try {
-      const btcResponse = await fetch('https://api.coinpaprika.com/v1/coins/btc-bitcoin/ohlcv/today');
-      const ethResponse = await fetch('https://api.coinpaprika.com/v1/coins/eth-ethereum/ohlcv/today');
-      const adaResponse = await fetch('https://api.coinpaprika.com/v1/coins/ada-cardano/ohlcv/today');
-      const ltcResponse = await fetch('https://api.coinpaprika.com/v1/coins/ltc-litecoin/ohlcv/today');
-
-      const btcData = await btcResponse.json();
-      const ethData = await ethResponse.json();
-      const adaData = await adaResponse.json();
-      const ltcData = await ltcResponse.json();
-
-      // Set the state for each cryptocurrency's price
-      if (btcData.length > 0) setBtcPrice(btcData[0].close);
-      if (ethData.length > 0) setEthPrice(ethData[0].close);
-      if (adaData.length > 0) setAdaPrice(adaData[0].close);
-      if (ltcData.length > 0) setLtcPrice(ltcData[0].close);
-
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchPriceData(); // Fetch data when the component mounts
-  }, []); // Empty dependency array means this effect runs once on mount
-
   const getCardTitle = (tab: any) => {
     
     switch (tab) {
@@ -80,7 +83,7 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
         return "Default";
     }
   };
-
+  
   return (
     <>
       <div className="flex-col max-w-6xl mx-auto">
@@ -138,12 +141,10 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
                     </svg>
                   </CardHeader>
                   <CardContent>
-                  <div className="text-2xl font-bold">
-                  {btcPrice !== null ? `$${btcPrice.toFixed(2)}` : "Loading..."}
-                  </div>
-                <p className="text-xs text-muted-foreground">
-                 +20.1% from last month
-                  </p>
+                    <div className="text-2xl font-bold">$45,231.89</div>
+                    <p className="text-xs text-muted-foreground">
+                      +20.1% from last month
+                    </p>
                   </CardContent>
                 </Card>
                 <Card>
@@ -167,9 +168,7 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
                     </svg>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">
-                    {ethPrice !== null ? `$${ethPrice.toFixed(2)}` : "Loading..."}
-                    </div>
+                    <div className="text-2xl font-bold">$2,350</div>
                     <p className="text-xs text-muted-foreground">
                       +180.1% from last month
                     </p>
@@ -193,11 +192,7 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
                     </svg>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">
-                    <div className="text-2xl font-bold">
-                  {adaPrice !== null ? `$${adaPrice.toFixed(2)}` : "Loading..."}
-                  </div>
-                    </div>
+                    <div className="text-2xl font-bold">$112</div>
                     <p className="text-xs text-muted-foreground">
                       +19% from last month
                     </p>
@@ -223,11 +218,7 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
                     </svg>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">
-                    <div className="text-2xl font-bold">
-                  {ltcPrice !== null ? `$${ltcPrice.toFixed(2)}` : "Loading..."}
-                  </div>
-                    </div>
+                    <div className="text-2xl font-bold">$573</div>
                     <p className="text-xs text-muted-foreground">
                     +22% from last month
                     </p>
@@ -254,6 +245,4 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
         </div>
     </>
   )
-};
-
-export default DashboardPage;
+}

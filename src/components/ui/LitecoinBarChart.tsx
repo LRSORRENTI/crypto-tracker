@@ -91,7 +91,7 @@ export function LitecoinBarChart() {
             axisLine={false}
             tickFormatter={(value) => `$${value}`}
             // domain={[0, yAxisMax]}
-            domain={[0, parsedy]}
+            // domain={[0, parsedy]}
           />
           <Bar dataKey="total" barSize={70} fill="#bc13fe" radius={[4, 4, 0, 0]} label={renderCustomBarLabel}  />
         </BarChart>

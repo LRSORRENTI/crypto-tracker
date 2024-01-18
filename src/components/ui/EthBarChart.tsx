@@ -47,6 +47,7 @@ export function EthBarChart() {
             try {
                 const response = await fetch('https://api.coinpaprika.com/v1/coins/eth-ethereum/ohlcv/today');
                 const data: EthPriceData[] = await response.json();
+                console.log(data)
                 if (data && data.length > 0) {
                     setPriceData(data[0]);
                 }
@@ -54,7 +55,6 @@ export function EthBarChart() {
                 console.error("Error fetching Ethereum data:", error);
             }
         };
-
         fetchPriceData();
     }, []);
 
@@ -71,11 +71,11 @@ export function EthBarChart() {
     const yAxisMax = (priceData?.high.toFixed(0));
     let parsedy = parseInt(yAxisMax) + 200;
     parsedy = Math.round(parsedy / 100) * 100;
-    console.log(parsedy);
+    // console.log(parsedy);
     const maxYValue = Math.max(...data.map(d => d.total ? d.total : 0));
 
     return (
-      <ResponsiveContainer width="100%" height={350}>
+      <ResponsiveContainer width="100%" height={380}>
         <BarChart data={data}>
           <XAxis
             dataKey="name"
@@ -90,8 +90,9 @@ export function EthBarChart() {
             tickLine={false}
             axisLine={false}
             tickFormatter={(value) => `$${value}`}
+            
             // domain={[0, yAxisMax]}
-            domain={[0, parsedy]}
+            // domain={[0, parsedy]}
           />
           <Bar dataKey="total" barSize={70} fill="#00d1dc" radius={[4, 4, 0, 0]} label={renderCustomBarLabel}  />
         </BarChart>
