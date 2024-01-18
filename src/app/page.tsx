@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Metadata } from "next"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { Skeleton } from '@/components/ui/skeleton';
 import {
   Card,
   CardContent,
@@ -139,7 +140,7 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
                   </CardHeader>
                   <CardContent>
                   <div className="text-2xl font-bold">
-                  {btcPrice !== null ? `$${btcPrice.toFixed(2)}` : "Loading..."}
+                  {btcPrice !== null ? `$${btcPrice.toFixed(2)}` : <Skeleton className="h-6 w-[140px] mt-1 mb-2" />}
                   </div>
                 <p className="text-xs text-muted-foreground">
                  +20.1% from last month
@@ -168,7 +169,7 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
                   </CardHeader>
                   <CardContent>
                     <div className="text-2xl font-bold">
-                    {ethPrice !== null ? `$${ethPrice.toFixed(2)}` : "Loading..."}
+                    {ethPrice !== null ? `$${ethPrice.toFixed(2)}` : <Skeleton className="h-6 w-[140px] mt-1 mb-2" />}
                     </div>
                     <p className="text-xs text-muted-foreground">
                       +180.1% from last month
@@ -195,7 +196,7 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
                   <CardContent>
                     <div className="text-2xl font-bold">
                     <div className="text-2xl font-bold">
-                  {adaPrice !== null ? `$${adaPrice.toFixed(2)}` : "Loading..."}
+                  {adaPrice !== null ? `$${adaPrice.toFixed(2)}` : <Skeleton className="h-6 w-[100px] mt-1 mb-2" />}
                   </div>
                     </div>
                     <p className="text-xs text-muted-foreground">
@@ -225,7 +226,7 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
                   <CardContent>
                     <div className="text-2xl font-bold">
                     <div className="text-2xl font-bold">
-                  {ltcPrice !== null ? `$${ltcPrice.toFixed(2)}` : "Loading..."}
+                  {ltcPrice !== null ? `$${ltcPrice.toFixed(2)}` : <Skeleton className="h-6 w-[100px] mt-1 mb-2" />}
                   </div>
                     </div>
                     <p className="text-xs text-muted-foreground">

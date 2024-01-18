@@ -60,7 +60,7 @@ export function CardanoBarChart() {
 
     const renderCustomBarLabel = ({ x, y, width, height, value }) => {
       return value ? (
-        <text style={{fontSize: "12px"}} x={x + width / 2} y={y} fill="#FFF9" textAnchor="middle" dy={-6}>
+        <text style={{fontSize: "12px"}} x={x + width / 2} y={y + 3} fill="#FFF9" textAnchor="middle" dy={-6}>
           {`$${value.toFixed(2)}`}
         </text>
       ) : null;

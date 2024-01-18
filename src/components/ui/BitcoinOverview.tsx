@@ -24,7 +24,6 @@ export function BitcoinOverview() {
         // change later 
           {
             name: "Open",
-            // total: Math.floor(Math.random() * 5000) + 1000,
             total: priceData?.open,
           },
           {
@@ -47,7 +46,7 @@ export function BitcoinOverview() {
             try {
                 const response = await fetch('https://api.coinpaprika.com/v1/coins/btc-bitcoin/ohlcv/today');
                 const data: BitcoinPriceData[] = await response.json();
-                console.log(data);
+                // console.log(data);
                 if (data && data.length > 0) {
                     setPriceData(data[0]);
                 }
@@ -61,7 +60,7 @@ export function BitcoinOverview() {
 
     const renderCustomBarLabel = ({ x, y, width, height, value }) => {
       return value ? (
-        <text style={{fontSize: "12px"}} x={x + width / 2} y={y} fill="#FFF9" textAnchor="middle" dy={-6}>
+        <text style={{fontSize: "12px"}} x={x + width / 2} y={y + 3} fill="#FFF9" textAnchor="middle" dy={-6}>
           {`$${value.toFixed(2)}`}
         </text>
       ) : null;

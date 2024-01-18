@@ -60,7 +60,7 @@ export function EthBarChart() {
 
     const renderCustomBarLabel = ({ x, y, width, height, value }) => {
       return value ? (
-        <text style={{fontSize: "12px"}} x={x + width / 2} y={y} fill="#FFF9" textAnchor="middle" dy={-6}>
+        <text style={{fontSize: "12px"}} x={x + width / 2} y={y + 3} fill="#FFF9" textAnchor="middle" dy={-6}>
           {`$${value.toFixed(2)}`}
         </text>
       ) : null;
@@ -68,9 +68,9 @@ export function EthBarChart() {
 
 
 
-    const yAxisMax = (priceData?.high.toFixed(0));
-    let parsedy = parseInt(yAxisMax) + 200;
-    parsedy = Math.round(parsedy / 100) * 100;
+    // const yAxisMax = (priceData?.high.toFixed(0));
+    // let parsedy = parseInt(yAxisMax) + 200;
+    // parsedy = Math.round(parsedy / 100) * 100;
     // console.log(parsedy);
     const maxYValue = Math.max(...data.map(d => d.total ? d.total : 0));
 
