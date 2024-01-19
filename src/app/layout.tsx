@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from '@/components/ui/theme-provider'
@@ -26,12 +27,12 @@ export default function RootLayout({
             disableTransitionOnChange
           >
         <nav className='flex justify-between'>
-          <h1 className='ml-7 md:ml-6'>
+          <h1 className='ml-7 md:ml-6 h1-tag'>
             Crypto Tracker
             {/* <ModeToggle/> */}
           </h1>
             <div className='ml-auto md:mr-6'>
-            <ModeToggle/>
+            {/* <ModeToggle/> */}
             </div>
         </nav>
         {children}

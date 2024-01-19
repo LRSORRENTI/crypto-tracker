@@ -67,6 +67,19 @@
   .magenta {
     --magenta: #ff1867;
   }
+
+  .electric-blue {
+    --electric-blue: #00d1dc;
+  }
+  .lime {
+    --lime: #00ff3c;
+  }
+  .purp {
+    --purp: #be5cff;
+  }
+  .mint {
+    --color: #66d184;
+  }
 }
 
 @layer base {
@@ -92,5 +105,57 @@
   h2 {
     @apply scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight
   transition-colors first:mt-0;
+  }
+}
+* {
+  transition: 0.2s ease;
+}
+.h1-tag {
+  color: #cfff04;
+  /* border: 1px solid #fff; */
+  border-radius: 8px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-right: 10px;
+  padding-left: 15px;
+  /* transition: 0.5s ease; */
+  box-shadow: 0 0 1px #cfff04, 0 0 2px #cfff04, 0 0 2px #cfff04, 0 0 2px #cfff04,
+    0 0 2px #cfff04, 0 0 4px #cfff04, 0 0 5px #cfff04;
+  /* box-shadow: rgba(207, 255, 4, 0.5) 0px 5px 10px -5px; */
+
+  letter-spacing: 9px;
+  /* text-shadow: 1px 1px 2px #cfff04, 0px -1px 3px rgba(255, 255, 255, 0.3); */
+}
+
+.bars {
+  width: 420px;
+  /* transition: 0.1s ease-in-out; */
+}
+
+@media (min-width: 600px) {
+  .bars {
+    width: 600px;
+  }
+}
+
+@media (min-width: 800px) {
+  .bars {
+    width: 700px;
+  }
+}
+
+/* iPhone SE 1st Generation */
+@media only screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) {
+  /* Your CSS */
+}
+
+/* iPhone SE 2nd Generation */
+@media only screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
+  .bars {
+    width: 320px;
+    font-size: 2px;
+  }
+  .h1-tag {
+    margin-right: 20px;
   }
 }
