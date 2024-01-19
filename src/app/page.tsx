@@ -29,6 +29,8 @@ import { EthBarChart } from "@/components/ui/EthBarChart";
 import { CardanoBarChart } from '@/components/ui/CardanoBarChart'
 import { LitecoinBarChart } from '@/components/ui/LitecoinBarChart'
 
+import '../app/globals.css'
+
 const DashboardPage = () => {
     // }
 let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -93,7 +95,7 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
             </div>
           </div>
           <Tabs defaultValue="overview" className="space-y-4">
-            <TabsList>
+            <TabsList className='tablist'>
             <TabsTrigger
             style={{ color: "#FF1867" }}
             value="overview"
@@ -235,8 +237,8 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
                   </CardContent>
                 </Card>
               </div>
-              <div className="grid gap-4 md:grid-cols-2">
-        <Card className="col-span-4">
+              <div className="flex justify-center">
+        <Card className="col-span-3 bars">
         <CardHeader>
          <CardTitle>{getCardTitle(activeTab)}</CardTitle>
           </CardHeader>
@@ -245,7 +247,6 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
             {activeTab === "reports" && <EthBarChart />}
             {activeTab === "ADA" && <CardanoBarChart/>}
             {activeTab === "LTC" && <LitecoinBarChart/>}
-            {/* Add similar conditions for other tabs if needed */}
           </CardContent>
         </Card>
       </div>

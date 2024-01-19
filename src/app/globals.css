@@ -108,7 +108,7 @@
   }
 }
 * {
-  transition: 0.5s ease;
+  transition: 0.2s ease;
 }
 .h1-tag {
   color: #cfff04;
@@ -125,4 +125,37 @@
 
   letter-spacing: 9px;
   /* text-shadow: 1px 1px 2px #cfff04, 0px -1px 3px rgba(255, 255, 255, 0.3); */
+}
+
+.bars {
+  width: 420px;
+  /* transition: 0.1s ease-in-out; */
+}
+
+@media (min-width: 600px) {
+  .bars {
+    width: 600px;
+  }
+}
+
+@media (min-width: 800px) {
+  .bars {
+    width: 700px;
+  }
+}
+
+/* iPhone SE 1st Generation */
+@media only screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) {
+  /* Your CSS */
+}
+
+/* iPhone SE 2nd Generation */
+@media only screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
+  .bars {
+    width: 320px;
+    font-size: 2px;
+  }
+  .h1-tag {
+    margin-right: 20px;
+  }
 }

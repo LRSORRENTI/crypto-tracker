@@ -1,7 +1,7 @@
 // "use client"
 import React, { useEffect, useState } from 'react';
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
-
+import '../../app/globals.css'
 interface LTCPriceData {
     time_open: string;
     time_close: string;
@@ -93,7 +93,7 @@ export function LitecoinBarChart() {
             // domain={[0, yAxisMax]}
             // domain={[0, parsedy]}
           />
-          <Bar dataKey="total" barSize={70} fill="#bc13fe" radius={[4, 4, 0, 0]} label={renderCustomBarLabel}  />
+          <Bar dataKey="total" barSize={60} fill="#bc13fe" radius={[4, 4, 0, 0]} label={renderCustomBarLabel}  />
         </BarChart>
       </ResponsiveContainer>
     )
