@@ -1,6 +1,7 @@
 // "use client"
 import React, { useEffect, useState } from 'react';
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
+import { ImplicitLabelType } from 'recharts/types/component/Label';
 
 interface BitcoinPriceData {
     time_open: string;
@@ -58,7 +59,8 @@ export function BitcoinOverview() {
         fetchPriceData();
     }, []);
 
-    const renderCustomBarLabel = ({ x, y, width, height, value }) => {
+
+    const renderCustomBarLabel = ({ x, y, width, height, value }: any): any => {
       return value ? (
         <text style={{fontSize: "9px"}} x={x + width / 2} y={y + 3} fill="#FFF9" textAnchor="middle" dy={-6}>
           {`$${value.toFixed(2)}`}

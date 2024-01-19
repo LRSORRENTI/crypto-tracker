@@ -58,7 +58,7 @@ export function LitecoinBarChart() {
         fetchPriceData();
     }, []);
 
-    const renderCustomBarLabel = ({ x, y, width, height, value }) => {
+    const renderCustomBarLabel = ({ x, y, width, height, value }: any): any => {
       return value ? (
         <text style={{fontSize: "12px"}} x={x + width / 2} y={y + 3} fill="#FFF9" textAnchor="middle" dy={-6}>
           {`$${value.toFixed(2)}`}
@@ -68,7 +68,7 @@ export function LitecoinBarChart() {
 
 
 
-    const yAxisMax = (priceData?.high.toFixed(0));
+    const yAxisMax: any = (priceData?.high.toFixed(0));
     let parsedy = parseInt(yAxisMax) + 200;
     parsedy = Math.round(parsedy / 100) * 10;
     console.log(parsedy);

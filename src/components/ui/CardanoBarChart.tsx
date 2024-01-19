@@ -58,7 +58,7 @@ export function CardanoBarChart() {
         fetchPriceData();
     }, []);
 
-    const renderCustomBarLabel = ({ x, y, width, height, value }) => {
+    const renderCustomBarLabel = ({ x, y, width, height, value }: any): any => {
       return value ? (
         <text style={{fontSize: "12px"}} x={x + width / 2} y={y + 3} fill="#FFF9" textAnchor="middle" dy={-6}>
           {`$${value.toFixed(2)}`}
