@@ -89,7 +89,7 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
       <div className="flex-col max-w-6xl mx-auto">
         <div className="flex-1 space-y-4 p-8 pt-6">
           <div className="flex items-center justify-between space-y-2">
-            <h2 className="text-2xl font-bold tracking-tight md:text-3xl" style={{color: "#CFFF04" }}>Dashboard</h2>
+            <h2 className="text-2xl font-bold tracking-tight md:text-3xl main-h2" style={{color: "#CFFF04" }}>Dashboard</h2>
             <div className="flex items-center space-x-2">
               <p className='date' style={{color: "#CFFF04"}}> {new Date().toLocaleDateString()}</p><p style={{color: "#CFFF04"}}>{time}</p>
             </div>
