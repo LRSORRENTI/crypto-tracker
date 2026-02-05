@@ -1,7 +1,6 @@
 // "use client"
 import React, { useEffect, useState } from 'react';
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
-import { ImplicitLabelType } from 'recharts/types/component/Label';
 
 interface BitcoinPriceData {
     time_open: string;
@@ -60,43 +59,40 @@ export function BitcoinOverview() {
     }, []);
 
 
-    const renderCustomBarLabel = ({ x, y, width, height, value }: any): any => {
+    const renderCustomBarLabel = ({ x, y, width, value }: any): any => {
       return value ? (
-        <text style={{fontSize: "9px"}} x={x + width / 2} y={y + 3} fill="#FFF9" textAnchor="middle" dy={-6}>
+        <text style={{fontSize: "10px"}} x={x + width / 2} y={y + 3} fill="hsl(var(--background))" textAnchor="middle" dy={-6}>
           {`$${value.toFixed(2)}`}
         </text>
       ) : null;
     };
 
-    // const yAxisMax = 50000;
-
-    // const yAxisMax = (priceData?.high.toFixed(2));
-    // let parsedy = (parseInt(yAxisMax) + 5000);
-    // console.log(parsedy)
-    const maxYValue = Math.max(...data.map(d => d.total ? d.total : 0));
-    // const yAxisMax = priceData?.high > 50000 ? maxYValue : 100000;
-    // const yAxisMax = priceData?.high > 40000 ? maxYValue : priceData?.high + 5000;
-    // const yAxisMax = priceData?.high + 5000;
     return (
-      <ResponsiveContainer width="100%" height={350}>
-        <BarChart data={data}>
+      <ResponsiveContainer width="100%" height={320}>
+        <BarChart data={data} margin={{ top: 16, right: 8, left: 8, bottom: 8 }}>
           <XAxis
             dataKey="name"
-            stroke="#888888"
+            stroke="hsl(var(--muted-foreground))"
+            tick={{ fill: "hsl(var(--muted-foreground))" }}
             fontSize={12}
             tickLine={false}
             axisLine={false}
           />
           <YAxis
-            stroke="#888888"
+            stroke="hsl(var(--muted-foreground))"
+            tick={{ fill: "hsl(var(--muted-foreground))" }}
             fontSize={12}
             tickLine={false}
             axisLine={false}
             tickFormatter={(value) => `$${value}`}
-            // domain={[0, yAxisMax]}
-            // domain={[0, yAxisMax]}
           />
-          <Bar dataKey="total" barSize={60} fill="#FF1867" radius={[4, 4, 0, 0]} label={renderCustomBarLabel}  />
+          <Bar
+            dataKey="total"
+            barSize={48}
+            fill="hsl(var(--btc))"
+            radius={[8, 8, 0, 0]}
+            label={renderCustomBarLabel}
+          />
         </BarChart>
       </ResponsiveContainer>
     )

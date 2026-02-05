@@ -1,4 +1,7 @@
+ "use client"
+
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 
@@ -6,32 +9,54 @@ export function MainNav({
   className,
   ...props
 }: React.HTMLAttributes<HTMLElement>) {
+  const pathname = usePathname()
+  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname?.startsWith(href))
   return (
     <nav
       className={cn("flex items-center space-x-4 lg:space-x-6", className)}
       {...props}
     >
       <Link
-        href="/examples/dashboard"
-        className="text-sm font-medium transition-colors hover:text-primary"
+        href="/"
+        className={cn(
+          "relative text-sm font-medium transition-colors hover:text-primary",
+          isActive("/")
+            ? "text-foreground after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-full after:rounded-full after:bg-foreground/80"
+            : "text-muted-foreground"
+        )}
       >
         Overview
       </Link>
       <Link
-        href="/examples/dashboard"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+        href="/markets"
+        className={cn(
+          "relative text-sm font-medium transition-colors hover:text-primary",
+          isActive("/markets")
+            ? "text-foreground after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-full after:rounded-full after:bg-foreground/80"
+            : "text-muted-foreground"
+        )}
       >
-        Customers
+        Markets
       </Link>
       <Link
-        href="/examples/dashboard"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+        href="/alerts"
+        className={cn(
+          "relative text-sm font-medium transition-colors hover:text-primary",
+          isActive("/alerts")
+            ? "text-foreground after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-full after:rounded-full after:bg-foreground/80"
+            : "text-muted-foreground"
+        )}
       >
-        Products
+        Alerts
       </Link>
       <Link
-        href="/examples/dashboard"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+        href="/settings"
+        className={cn(
+          "relative text-sm font-medium transition-colors hover:text-primary",
+          isActive("/settings")
+            ? "text-foreground after:absolute after:-bottom-2 after:left-0 after:h-[2px] after:w-full after:rounded-full after:bg-foreground/80"
+            : "text-muted-foreground"
+        )}
       >
         Settings
       </Link>

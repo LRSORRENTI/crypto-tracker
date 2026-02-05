@@ -29,8 +29,6 @@ import { EthBarChart } from "@/components/ui/EthBarChart";
 import { CardanoBarChart } from '@/components/ui/CardanoBarChart'
 import { LitecoinBarChart } from '@/components/ui/LitecoinBarChart'
 
-import '../app/globals.css'
-
 const DashboardPage = () => {
     // }
 let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -86,34 +84,35 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
 
   return (
     <>
-      <div className="flex-col max-w-6xl mx-auto">
-        <div className="flex-1 space-y-4 p-8 pt-6">
+      <div className="flex-col">
+        <div className="flex-1 space-y-6 pb-10 pt-8 md:pt-10">
           <div className="flex items-center justify-between space-y-2">
-            <h2 className="text-2xl font-bold tracking-tight md:text-3xl main-h2" style={{color: "#CFFF04" }}>Dashboard</h2>
-            <div className="flex items-center space-x-2">
-              <p className='date' style={{color: "#CFFF04"}}> {new Date().toLocaleDateString()}</p><p style={{color: "#CFFF04"}}>{time}</p>
+            <h2 className="text-2xl font-semibold tracking-tight md:text-3xl main-h2">Dashboard</h2>
+            <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+              <p className="date">{new Date().toLocaleDateString()}</p>
+              <p>{time}</p>
             </div>
           </div>
           <Tabs defaultValue="overview" className="space-y-4">
             <TabsList className='tablist'>
             <TabsTrigger
-            style={{ color: "#FF1867" }}
+            className="crypto-btc data-[state=active]:text-[hsl(var(--btc))]"
             value="overview"
             onClick={() => setActiveTab("overview")}
             >Bitcoin</TabsTrigger>
              <TabsTrigger
-              style={{ color: "#00d1dc" }}
+              className="crypto-eth data-[state=active]:text-[hsl(var(--eth))]"
               value="reports"
               onClick={() => setActiveTab("reports")}
               >
               Ethereum
               </TabsTrigger>
-              <TabsTrigger style={{color: "#00FF3C"}}
+              <TabsTrigger className="crypto-ada data-[state=active]:text-[hsl(var(--ada))]"
               value='ADA'
               onClick={() => setActiveTab("ADA")}>
                 Cardano
               </TabsTrigger>
-              <TabsTrigger style={{color: "#bc13fe"}}
+              <TabsTrigger className="crypto-ltc data-[state=active]:text-[hsl(var(--ltc))]"
               value='LTC'
               onClick={() => setActiveTab("LTC")}
               >
@@ -124,7 +123,7 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium" style={{color: "#FF1867"}}>
+                    <CardTitle className="text-sm font-medium crypto-btc">
                       Bitcoin
                     </CardTitle>
                     <svg
@@ -135,9 +134,9 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth="2"
-                      className="h-4 w-4 text-muted-foreground"
+                      className="h-4 w-4 crypto-btc"
                     >
-                      <path style={{color: "#FF1867"}} d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
                     </svg>
                   </CardHeader>
                   <CardContent>
@@ -151,7 +150,7 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
                 </Card>
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium" style={{color: "#00d1dc"}}>
+                    <CardTitle className="text-sm font-medium crypto-eth">
                       Ethereum
                     </CardTitle>
                     <svg
@@ -162,9 +161,9 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth="2"
-                      className="h-4 w-4 text-muted-foreground"
+                      className="h-4 w-4 crypto-eth"
                     >
-                     <path style={{color: "#00d1dc"}} d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                     <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
              
 
                     </svg>
@@ -180,7 +179,7 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
                 </Card>
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium" style={{color: "#00FF3c"}}>Cardano</CardTitle>
+                    <CardTitle className="text-sm font-medium crypto-ada">Cardano</CardTitle>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -189,10 +188,10 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth="2"
-                      className="h-4 w-4 text-muted-foreground"
+                      className="h-4 w-4 crypto-ada"
                     >
                      
-                      <path style={{color: "#00ff3c"}} d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
                     </svg>
                   </CardHeader>
                   <CardContent>
@@ -208,7 +207,7 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
                 </Card>
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium" style={{color: "#bc13fe"}}>
+                    <CardTitle className="text-sm font-medium crypto-ltc">
                       Litecoin
                     </CardTitle>
                     <svg
@@ -219,10 +218,10 @@ let time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth="2"
-                      className="h-4 w-4 text-muted-foreground"
+                      className="h-4 w-4 crypto-ltc"
                     >
                      
-                      <path style={{color: "#bc13fe"}} d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
                     </svg>
                   </CardHeader>
                   <CardContent>

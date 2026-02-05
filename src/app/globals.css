@@ -4,81 +4,70 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 210 25% 98%;
+    --foreground: 222 38% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 222 38% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 222 38% 12%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 222 38% 12%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 210 18% 94%;
+    --secondary-foreground: 222 38% 12%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 210 16% 92%;
+    --muted-foreground: 215 16% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 210 22% 93%;
+    --accent-foreground: 222 38% 12%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 72% 52%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 214 18% 88%;
+    --input: 214 18% 88%;
+    --ring: 222 30% 20%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    --btc: 28 95% 55%;
+    --eth: 188 85% 44%;
+    --ada: 142 70% 40%;
+    --ltc: 268 80% 64%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 222 47% 6%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 222 45% 10%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 222 45% 8%;
     --popover-foreground: 210 40% 98%;
 
     --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary-foreground: 222 38% 12%;
 
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 217 26% 18%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 217 26% 16%;
+    --muted-foreground: 215 16% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 217 26% 20%;
     --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 62% 34%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-  }
-  .magenta {
-    --magenta: #ff1867;
-  }
-
-  .electric-blue {
-    --electric-blue: #00d1dc;
-  }
-  .lime {
-    --lime: #00ff3c;
-  }
-  .purp {
-    --purp: #be5cff;
-  }
-  .mint {
-    --color: #66d184;
+    --border: 217 22% 22%;
+    --input: 217 22% 22%;
+    --ring: 210 30% 76%;
   }
 }
 
@@ -87,91 +76,91 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+    background-image:
+      radial-gradient(60rem 60rem at 12% -20%, hsl(var(--accent) / 0.45), transparent 60%),
+      radial-gradient(40rem 40rem at 88% -10%, hsl(var(--secondary) / 0.6), transparent 55%);
+    background-attachment: fixed;
+    min-height: 100vh;
   }
-  main,
-  nav {
-    @apply max-w-6xl mx-auto my-12;
+  main {
+    @apply max-w-6xl mx-auto w-full px-6;
   }
 
   p {
     @apply mt-2;
   }
 
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  }
+
   h1 {
-    @apply scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl;
+    @apply scroll-m-20 text-4xl font-semibold tracking-tight lg:text-5xl;
   }
 
   h2 {
-    @apply scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight
-  transition-colors first:mt-0;
+    @apply scroll-m-20 text-3xl font-semibold tracking-tight transition-colors first:mt-0;
   }
 }
-* {
-  transition: 0.2s ease;
-}
-.h1-tag {
-  color: #cfff04;
-  /* border: 1px solid #fff; */
-  border-radius: 8px;
-  padding-top: 12px;
-  font-size: 1rem;
-  padding-bottom: 12px;
-  padding-right: 10px;
-  padding-left: 15px;
-  /* transition: 0.5s ease; */
-  box-shadow: 0 0 1px #cfff04, 0 0 2px #cfff04, 0 0 2px #cfff04, 0 0 2px #cfff04,
-    0 0 2px #cfff04, 0 0 4px #cfff04, 0 0 5px #cfff04;
-  /* box-shadow: rgba(207, 255, 4, 0.5) 0px 5px 10px -5px; */
 
-  letter-spacing: 9px;
-  /* font-size: 20px; */
-  /* text-shadow: 1px 1px 2px #cfff04, 0px -1px 3px rgba(255, 255, 255, 0.3); */
+* {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.h1-tag {
+  color: hsl(var(--foreground));
+  background: hsl(var(--accent) / 0.8);
+  border: 1px solid hsl(var(--border));
+  border-radius: 999px;
+  padding: 0.4rem 0.95rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 .bars {
-  width: 420px;
-  /* transition: 0.1s ease-in-out; */
+  width: min(100%, 900px);
 }
 
-@media (min-width: 600px) {
-  .bars {
-    width: 600px;
-  }
+.tablist {
+  border-radius: 999px;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--accent) / 0.7);
+  padding: 0.35rem;
+  gap: 0.35rem;
+  backdrop-filter: blur(10px);
 }
 
-@media (min-width: 800px) {
-  .bars {
-    width: 700px;
-  }
+.crypto-btc {
+  color: hsl(var(--btc));
 }
 
-/* iPhone SE 1st Generation */
-@media only screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) {
-  /* Your CSS */
+.crypto-eth {
+  color: hsl(var(--eth));
 }
 
-/* iPhone SE 2nd Generation */
-@media only screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) {
-  .bars {
-    width: 320px;
-    font-size: 2px;
-  }
+.crypto-ada {
+  color: hsl(var(--ada));
+}
+
+.crypto-ltc {
+  color: hsl(var(--ltc));
+}
+
+.main-h2 {
+  color: hsl(var(--foreground));
+}
+
+@media (max-width: 480px) {
   .h1-tag {
-    margin-right: 20px;
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 320px) {
-  .h1-tag {
-    font-size: 10px;
-  }
-  .main-h2 {
-    font-size: 12px;
-  }
-
-  p {
-    font-size: 10px;
+    letter-spacing: 0.25em;
+    font-size: 0.7rem;
   }
 }

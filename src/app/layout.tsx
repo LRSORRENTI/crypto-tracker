@@ -1,12 +1,25 @@
 
 import type { Metadata } from 'next'
 import Head from 'next/head';
-import { Inter } from 'next/font/google'
+import { IBM_Plex_Sans, Space_Grotesk } from 'next/font/google'
 import { ThemeProvider } from '@/components/ui/theme-provider'
+import { MainNav } from '@/components/ui/main-nav'
+import { Search } from '@/components/ui/search'
+import { UserNav } from '@/components/ui/user-nav'
 import { ModeToggle } from '@/components/ui/mode-toggle'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const bodyFont = IBM_Plex_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-body',
+})
+
+const displayFont = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['500', '600', '700'],
+  variable: '--font-display',
+})
 
 export const metadata: Metadata = {
   title: 'Crypto Tracker',
@@ -24,23 +37,31 @@ export default function RootLayout({
         <Head>
       <link rel="shortcut icon" href="/favicon.ico" />
     </Head>
-  <body className={inter.className}>
+  <body className={`${bodyFont.variable} ${displayFont.variable}`}>
       <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
-        <nav className='flex justify-between'>
-          <p className='ml-7 md:ml-6 h1-tag text-sm font-extrabold'>
-            Crypto Tracker
-            {/* <ModeToggle/> */}
-          </p>
-            <div className='ml-auto md:mr-6'>
-            {/* <ModeToggle/> */}
+        <header className="sticky top-0 z-20 border-b border-border/60 bg-background/80 backdrop-blur">
+          <div className="max-w-6xl mx-auto flex items-center gap-6 px-6 py-4">
+            <p className="h1-tag">Crypto Tracker</p>
+            <div className="hidden md:block">
+              <MainNav />
             </div>
-        </nav>
-        {children}
+            <div className="ml-auto flex items-center gap-3">
+              <div className="hidden sm:block">
+                <Search />
+              </div>
+              <ModeToggle />
+              <UserNav />
+            </div>
+          </div>
+        </header>
+        <main className="pb-16">
+          {children}
+        </main>
         </ThemeProvider>
       </body>
     </html>
